@@ -1,4 +1,4 @@
-package com.aula.crudProduto.Model;
+package com.aula.crudProduto.Produtos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,26 +6,43 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "tb_cadastro_produto")
-public class ProdutoModel {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int produtoId;
+    private Long produtoId;
+    private String estacao;
     private String produtoDesc;
-    private String produtoEstacao;
     private String produtoSexo;
     private Double produtoValor;
-
-    public ProdutoModel() {
+    
+    public Produto() {
     }
 
-    public ProdutoModel(int produtoId, String produtoDesc, String produtoEstacao, String produtoSexo,
-            Double produtoValor) {
+    public Produto(Long produtoId, String estacao, String produtoDesc, String produtoSexo, Double produtoValor) {
+        this.produtoId = produtoId;
+        this.estacao = estacao;
         this.produtoDesc = produtoDesc;
-        this.produtoEstacao = produtoEstacao;
         this.produtoSexo = produtoSexo;
         this.produtoValor = produtoValor;
+    }
+
+    public Long getProdutoId() {
+        return produtoId;
+    }
+
+    public void setProdutoId(Long produtoId) {
+        this.produtoId = produtoId;
+    }
+
+    public String getEstacao() {
+        return estacao;
+    }
+
+    public void setEstacao(String estacao) {
+        this.estacao = estacao;
     }
 
     public String getProdutoDesc() {
@@ -34,14 +51,6 @@ public class ProdutoModel {
 
     public void setProdutoDesc(String produtoDesc) {
         this.produtoDesc = produtoDesc;
-    }
-
-    public String getProdutoEstacao() {
-        return produtoEstacao;
-    }
-
-    public void setProdutoEstacao(String produtoEstacao) {
-        this.produtoEstacao = produtoEstacao;
     }
 
     public String getProdutoSexo() {
@@ -59,6 +68,4 @@ public class ProdutoModel {
     public void setProdutoValor(Double produtoValor) {
         this.produtoValor = produtoValor;
     }
-    
-    
 }

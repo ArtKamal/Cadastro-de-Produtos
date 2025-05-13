@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+    <h2>Pessoas Cadastradas</h2>
+    <a th:href="@{/nova}">Nova Pessoa</a>
+    <table border="1">
+        <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Data Nascimento</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+        </tr>
+        <tr th:each="p : ${pessoas}">
+            <td th:text="${p.cpf}"></td>
+            <td th:text="${p.nome}"></td>
+            <td th:text="${p.dataNascimento}"></td>
+            <td th:text="${p.rua + ', ' + p.numero + ' - ' + p.cidade}"></td>
+            <td>
+                <a th:href="@{'/editar/' + ${p.cpf}}">Editar</a> |
+                <a th:href="@{'/deletar/' + ${p.cpf}}">Deletar</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
