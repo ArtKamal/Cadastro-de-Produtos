@@ -1,14 +1,12 @@
 package com.aula.crudProduto.Produtos;
 
-import java.util.List;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.aula.crudProduto.service.ProdutoService;
 
@@ -23,11 +21,11 @@ public class ProdutoController {
     
     @GetMapping("/")
     public String listAll(Model model){model.addAttribute("produtos", produtoService.getAll());
-    return "list";}
+    return "list.html";}
 
     @GetMapping("/new")
     public String newProduto(Model model) {model.addAttribute("produto", new Produto());
-    return "form";}
+    return "";}
 
     @PostMapping("/save")
     public String save(@ModelAttribute Produto produto){produtoService.save(produto);

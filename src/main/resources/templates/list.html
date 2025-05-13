@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Pessoas</title>
+    <title>Lista de Produtos</title>
 </head>
 <body>
-    <h2>Pessoas Cadastradas</h2>
-    <a th:href="@{/nova}">Nova Pessoa</a>
+    <h2>Produtos Cadastradas</h2>
+    <a th:href="@{/nova}">Novo Produto</a>
     <table border="1">
         <tr>
-            <th>CPF</th>
-            <th>Nome</th>
-            <th>Data Nascimento</th>
-            <th>Endereço</th>
-            <th>Ações</th>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Estação</th>
+            <th>Sexo</th>
+            <th>Valor</th>
         </tr>
-        <tr th:each="p : ${pessoas}">
-            <td th:text="${p.cpf}"></td>
-            <td th:text="${p.nome}"></td>
-            <td th:text="${p.dataNascimento}"></td>
-            <td th:text="${p.rua + ', ' + p.numero + ' - ' + p.cidade}"></td>
+        <tr th:each="p : ${produtos}">
+            <td th:text="${p.produtoId}"></td>
+            <td th:text="${p.produtoDescricao}"></td>
+            <td th:text="${p.produtoEstacao}"></td>
+            <td th:text="${p.produtoSexo}"></td>
+            <td th:text="${p.produtoValor}"></td>
             <td>
-                <a th:href="@{'/editar/' + ${p.cpf}}">Editar</a> |
-                <a th:href="@{'/deletar/' + ${p.cpf}}">Deletar</a>
+                <a th:href="@{'/edit/' + ${p.produtoId}}">Editar</a> |
+                <a th:href="@{'/delete/' + ${p.produtoId}}">Deletar</a>
             </td>
         </tr>
     </table>
